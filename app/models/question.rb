@@ -3,6 +3,5 @@ class Question < ActiveRecord::Base
 
   has_many :choices
   has_many :responses, through: :choices
-  has_many :voters, through: :responses #finish
-
+  has_many :voters, through: :responses, source: :voter
 end
