@@ -1,16 +1,21 @@
 $(document).ready(function () {
 
-  $('#submit').submit(function (event) {
+  $('#new_survey').on("submit", function (event) {
+    console.log("HEY");
 
     event.preventDefault();
 
     var request = $.ajax(
-      {url: "/surveys",
-        method: "post"}
+      {url: "/surveys/new",
+        type: "post",
+        data: $(this).serialize(),
+        dataType: "json"}
     );
 
     request.done(function (result) {
-      $('#submit').append("Success! created " + result);
+      $('#new_survey_button').css("display", "none");
+      $('#new_survey').css("display", "none");
+      $('#create_survey_div').append("Success!");
     });
   });
 });
