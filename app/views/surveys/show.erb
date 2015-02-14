@@ -1,8 +1,9 @@
-
-<p>Rendering the vote partial... </p>
+<div class="container">
+<h1>Survey: <%= @survey.title %></h1>
 
 <% if @user.id == @survey.creator_id %>
     <%= erb :"surveys/_edit" %>
-  <% else%>
+  <% else %>
     <%= erb :"surveys/_vote" %>
 <% end %>
+</div>
