@@ -13,7 +13,7 @@ $(document).ready(function () {
     );
 
     request.done(function (result) {
-      $('#new_survey_button').css("display", "none");
+      $('#small_button').css("display", "none");
       $('#new_survey').css("display", "none");
       $('#create_survey_div').append("Success!");
     });
