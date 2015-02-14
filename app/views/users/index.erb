@@ -3,7 +3,7 @@
   <p>logged in as <%=@user.username%></p>
   <a href = "surveys/new">CREATE SURVEY</a>
   <p>created surveys</p>
-  <ul>git s
+  <ul>
     <%@user.surveys.each do |survey| %>
       <li><a href="/surveys/<%=survey.id%>"><%=survey.title%></a></li>
       <%end%>
