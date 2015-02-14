@@ -1,8 +1,8 @@
-<h1>CREATE A NEW SURVEY!</h1>
+<div class="container">
+  <h1>CREATE A NEW SURVEY!</h1>
 
-<form action="/surveys/new" method="POST">
-  <input type="text" placeholder="survey title" name= "survey[title]"><br>
-  <textarea rows="10" cols="50" placeholder="survey description" name="survey[description]"></textarea><br>
-  <input type="submit" value="CREATE SURVEY">
-</form>
+  <%= erb :"surveys/_form" %>
 
+  <%= erb :"surveys/_questions" %>
+
+</div>
