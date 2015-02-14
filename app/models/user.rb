@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   validates_uniqueness_of :username, :email, case_sensitive: false
 
-  has_many :surveys, foreign_key: :creator_id
+  has_many :created_surveys, foreign_key: :creator_id, class_name: "User"
 
 
   has_many :responses, foreign_key: :voter_id
