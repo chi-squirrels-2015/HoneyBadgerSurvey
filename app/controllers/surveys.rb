@@ -9,8 +9,6 @@ end
 
 post '/surveys' do
   @user = User.find_by(id: session[:user_id])
-  new_survey = Survey.new params[:survey]
-  new_survey.creator_id = @user.id
 
   # all_questions = params[:questions]
 
@@ -20,6 +18,14 @@ post '/surveys' do
   #     Response.new choice: choice, question_id: new_question.id
   #   end
   # end
+  if request.xhr?
+    new_survey = Survey.new params[:survey]
+    new_survey.creator_id = @user.id
+        
+    content_type :json
+    {new_survey}.to_json
+  end
+
   new_survey.save
   erb :'/surveys/show'
 end
