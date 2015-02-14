@@ -1,10 +1,8 @@
 
 <div class="container">
   <h1>Click one of the surveys below to participate</h1>
-  <ul>
     <%@surveys.each do |survey| %>
-      <li><a href="/surveys/<%=survey.id%>"><%=survey.title%></a></li>
+      <h4><i class="fa fa-leaf"></i>&nbsp&nbsp<a href="/surveys/<%=survey.id%>"><%=survey.title%></a></h4>
       <%end%>
-    </ul>
 
 </div>
