@@ -1,0 +1,8 @@
+
+<p>Rendering the vote partial... </p>
+
+<% if @user.id == @survey.creator_id %>
+    <%= erb :"surveys/_edit" %>
+  <% else%>
+    <%= erb :"surveys/_vote" %>
+<% end %>

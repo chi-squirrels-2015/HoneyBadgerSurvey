@@ -4,7 +4,7 @@
   <a href = "surveys/new">CREATE SURVEY</a>
   <p>created surveys</p>
   <ul>
-    <%@user.created_surveys.each do |survey| %>
+    <%@user.surveys.each do |survey| %>
       <li><a href="/surveys/<%=survey.id%>"><%=survey.title%></a></li>
       <%end%>
     </ul>
