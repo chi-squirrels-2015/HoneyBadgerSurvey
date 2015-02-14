@@ -31,3 +31,29 @@ get '/surveys/:id' do
   erb :'/surveys/show'
 end
 
+post "/surveys/:id" do
+  @user = User.find_by(id: session[:user_id])
+  @survey = Survey.find(params[:id])
+  @responses = Response.create(choice_id: params[:choice], voter_id: session[:user_id])
+
+  erb :"surveys/show"
+end
+
+
+
+
+put "/surveys/:id" do
+  @survey = Survey.find(params[:id])
+  @questions = Question.find_by(survey_id: @survey.id)
+  @choices = Choice.find_by(question_id: @questions.id)
+
+  @survey.update(params[:survey])
+  @questions.each {|question| question.update(params[:question])}
+  @choices.each {|choice| choice.update(params[:choice])}
+
+  redirect "/dashboard"
+end
+
+
+
+

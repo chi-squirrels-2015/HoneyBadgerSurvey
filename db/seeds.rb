@@ -31,8 +31,8 @@ Question.create(ask: "Marvel or DC?", survey: superhero_survey)
 Question.create(ask: "The Flash or AquaMan?", survey: superhero_survey)
 Question.create(ask: "Batman or Green Lantern?", survey: superhero_survey)
 
-Choice.create(decision: "The Flash", question_id: 4)
-Choice.create(decision: "AquaMan", question_id: 4)
+Choice.create(decision: "Marvel", question_id: 4)
+Choice.create(decision: "DC", question_id: 4)
 
 Choice.create(decision: "The Flash", question_id: 5)
 Choice.create(decision: "AquaMan", question_id: 5)
