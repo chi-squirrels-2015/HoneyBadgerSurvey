@@ -1,0 +1,7 @@
+  <h1>Click one of the surveys below to participate</h1>
+  <ul>
+    <%@surveys.each do |survey| %>
+      <li><a href="/surveys/<%=survey.id%>"><%=survey.title%></a></li>
+      <%end%>
+    </ul>
+
