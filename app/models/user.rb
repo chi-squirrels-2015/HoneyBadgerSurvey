@@ -1,13 +1,13 @@
 class User < ActiveRecord::Base
   validates_uniqueness_of :username, :email, case_sensitive: false
 
-  has_many :created_surveys, foreign_key: :creator_id
+  has_many :surveys, foreign_key: :creator_id
+
 
   has_many :responses, foreign_key: :voter_id
   has_many :choices, through: :responses
   has_many :questions, through: :choices
-  has_many :voted_on_surveys, through: :questions, source: :survey
-
+  has_many :voted_on_surveys, -> { uniq }, through: :questions, source: :survey
 
   def password
     @password ||= BCrypt::Password.new(password_hash)
