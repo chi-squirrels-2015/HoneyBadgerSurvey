@@ -23,6 +23,9 @@ post '/surveys/new' do
 end
 
 get '/surveys/:id' do
+  @user = User.find_by(id: session[:user_id])
+  @survey = Survey.find(params[:id])
+
   erb :'/surveys/show'
 end
 
