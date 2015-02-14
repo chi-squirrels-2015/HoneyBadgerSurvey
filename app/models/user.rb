@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
 
   has_many :created_surveys, foreign_key: :creator_id, class_name: "User"
 
-
   has_many :responses, foreign_key: :voter_id
   has_many :choices, through: :responses
   has_many :questions, through: :choices
