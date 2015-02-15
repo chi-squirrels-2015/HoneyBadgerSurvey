@@ -1,6 +1,7 @@
 <!-- dashboard -->
 <div class="container">
   <h2><p>logged in as <%=@user.username%></p></h2>
+
   <a class="small_button" href = "surveys/new">CREATE SURVEY</a>
   <h2>created surveys</h2>
     <%@user.created_surveys.each do |survey| %>
@@ -10,4 +11,10 @@
   <%@user.voted_on_surveys.each do |survey| %>
     <a href="/surveys/<%=survey.id%>"><%=survey.title%></a>
     <%end%>
+
+    <br><br><br>
+  <form action="/logout" method="get">
+    <input type="submit" value="Logout">
+  </form>
+
 </div>

@@ -35,18 +35,23 @@ get '/surveys/:id' do
   erb :'/surveys/show'
 end
 
-post "/surveys/:id" do
+
+
+post "/surveys/:id" do # Route for Voting -- Working
   @user = User.find_by(id: session[:user_id])
   @survey = Survey.find(params[:id])
-  @responses = Response.create(choice_id: params[:choice], voter_id: session[:user_id])
 
-  erb :"surveys/show"
+  @survey.questions.each do |q|
+    Response.create(choice_id: params[:"#{q.id}"], voter_id: session[:user_id])
+  end
+
+  erb :"surveys/_done"
 end
 
 
 
 
-put "/surveys/:id" do
+put "/surveys/:id" do # Route for edit -- Broken
   @survey = Survey.find(params[:id])
   @questions = Question.find_by(survey_id: @survey.id)
   @choices = Choice.find_by(question_id: @questions.id)
@@ -57,6 +62,19 @@ put "/surveys/:id" do
 
   redirect "/dashboard"
 end
+
+delete "/surveys/:id" do # Route for delete -- Working
+  @survey = Survey.find(params[:id])
+
+  @survey.responses.each {|response| response.delete }
+  @survey.choices.each {|choice| choice.delete }
+  @survey.questions.each {|question| question.delete }
+  @survey.delete
+
+
+  redirect "/dashboard"
+end
+
 
 
 
