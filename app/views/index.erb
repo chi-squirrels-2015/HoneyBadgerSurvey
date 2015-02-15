@@ -1,9 +1,14 @@
-<!-- landing page -->
-
 <div class="container">
+
+  <% if @error %>
+    <div class="errors"><%= @error %></div>
+  <% end %>
+
   <h1>HONEY BADGER SURVEY</h1>
   <h3>"Because Honey Badger Don't Care"</h3>
 
 <p><img src="/images/honey_badger.png"></p>
   <a class="button" href = "/login">LOGIN OR CREATE ACCOUNT</a>
+
+
 </div>

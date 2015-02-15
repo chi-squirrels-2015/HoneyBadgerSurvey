@@ -1,8 +1,6 @@
 $(document).ready(function () {
 
   $('#new_survey').on("submit", function (event) {
-    console.log("HEY");
-
     event.preventDefault();
 
     var request = $.ajax(
@@ -18,4 +16,5 @@ $(document).ready(function () {
       $('#create_survey_div').append("Success!");
     });
   });
+
 });
