@@ -1,1 +1,16 @@
-<p>Vote Partial</p>
+<div>
+
+    <%= @survey.description %>
+    <br><br>
+    <% @survey.questions.each do |question| %>
+      <form action="/surveys/<%= @survey.id %>" method="POST">
+        <div><h4><%= question.ask %></h4>
+          <% question.choices.each do |choice| %><br>
+            <input type="radio" name="choice" value="<%= choice.id %>" checked><%= choice.decision %>
+          <% end %><br><br></div>
+          <input type="submit" value="Submit"><br><br>
+      </form>
+    <% end %>
+
+</div>
+
