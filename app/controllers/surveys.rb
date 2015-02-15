@@ -48,8 +48,8 @@ put "/surveys/:id" do
   @choices = Choice.find_by(question_id: @questions.id)
 
   @survey.update(params[:survey])
-  @questions.each {|question| question.update(params[:question])}
-  @choices.each {|choice| choice.update(params[:choice])}
+  @questions.update(params[:question])
+  @choices.update(params[:choice])
 
   redirect "/dashboard"
 end
