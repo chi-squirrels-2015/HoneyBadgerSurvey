@@ -2,6 +2,7 @@
 #"/login"
 
 get '/' do
+
   erb :index
 end
 
@@ -20,7 +21,7 @@ post '/login' do
     redirect '/dashboard'
   else
     # an error occurred, re-render the sign-in form, displaying an error
-    @error = "Invalid email or password."
+    @login_error = "Invalid email or password."
     erb :login
   end
 end
@@ -47,6 +48,7 @@ post '/users' do
     redirect '/dashboard'
   else
     # an error occurred, re-render the sign-up form, displaying errors
+    @create_error = "Account was not created, Username or Email already exists."
     erb :login
   end
 end

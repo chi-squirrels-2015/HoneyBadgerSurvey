@@ -1,8 +1,34 @@
 
 <div class="container">
+
+  <h3>Login</h3>
+
+  <% if @login_error %>
+    <div class="errors"><%= @login_error %></div>
+  <% end %>
+
+
   <form action="/login" method="POST">
-    <input type="text" placeholder="username" name="username">
-    <input type="password" placeholder="password" name="password">
+    <input type="text" placeholder="Username" name="username">
+    <input type="password" placeholder="Password" name="password">
+    <br>
     <input type="submit" value="LOGIN">
   </form>
+
+
+
+
+  <h3>Create Account</h3>
+
+  <% if @create_error %>
+    <div class="errors"><%= @create_error %></div>
+  <% end %>
+
+  <form action="/users" method="Post">
+    <input type="text" placeholder="Username" name="user[username]">
+    <input type="text" placeholder="Email" name="user[email]">
+    <br>
+    <input type="password" placeholder="Password" name="user[password]">
+    <br>
+    <input type="submit" value="Create Account">
 </div>

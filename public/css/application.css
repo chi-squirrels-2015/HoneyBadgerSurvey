@@ -6,9 +6,6 @@
 }
 
 .container {
- /*margin: 0 auto;
- text-align: center;
-*/
   overflow: auto;
   margin: 20px auto;
   width: 600px;
@@ -121,4 +118,12 @@ body {
 
 .fa-leaf {
   color: #307B30
+}
+
+#dash_buttons div{
+  display: inline-block;
+}
+
+#stats {
+  display: none;
 }

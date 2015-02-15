@@ -1,4 +1,14 @@
+before "/surveys/:anything" do
+  if session[:user_id]
+    @user = User.find_by(id: session[:user_id])
+  else
+    session.delete(:user_id)
+    redirect "/" #Need to add a message prompt to login
+  end
+end
+
 get '/surveys' do
+  @user = User.find_by(id: session[:user_id])
   @surveys = Survey.all
   erb :'/surveys/index'
 end
@@ -8,7 +18,7 @@ get '/surveys/new' do
 end
 
 post '/surveys/new' do
-  @user = User.find_by(id: session[:user_id])
+  # @user = User.find_by(id: session[:user_id])
   if request.xhr?
     @survey = Survey.new params[:survey]
     @survey.creator_id = @user.id
@@ -28,8 +38,18 @@ end
   #   end
   # end
 
+
+get "/surveys/:id/stats" do
+
+  if request.xhr?
+    @survey = Survey.find(params[:id])
+    erb :"surveys/_stats"
+  end
+
+end
+
 get '/surveys/:id' do
-  @user = User.find_by(id: session[:user_id])
+  # @user = User.find_by(id: session[:user_id])
   @survey = Survey.find(params[:id])
 
   erb :'/surveys/show'
@@ -38,7 +58,7 @@ end
 
 
 post "/surveys/:id" do # Route for Voting -- Working
-  @user = User.find_by(id: session[:user_id])
+  # @user = User.find_by(id: session[:user_id])
   @survey = Survey.find(params[:id])
 
   @survey.questions.each do |q|

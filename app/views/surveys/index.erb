@@ -2,7 +2,12 @@
 <div class="container">
   <h1>Click one of the surveys below to participate</h1>
     <%@surveys.each do |survey| %>
+
+
       <h4><i class="fa fa-leaf"></i>&nbsp&nbsp<a href="/surveys/<%=survey.id%>"><%=survey.title%></a></h4>
+
       <%end%>
 
 </div>
+
+
