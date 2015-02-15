@@ -1,14 +1,18 @@
 <br><br>
 
+<div id="created_questions">
+</div>
+
+<div id="add_question_div">
 <h3>Add Questions:</h3>
-<div>
-  <form action="/surveys" method="POST">
-    <input type="text" placeholder="Question" name="question[ask]"><br><br>
+  <form id="question_choice_form" action="/questions/new" method="POST">
+    <input id="add_question_button" type="text" placeholder="Question" name="question[ask]"><br><br>
 
     <h3><label>Add Choices:</label></h3>
-      <input type="text" placeholder="Choice 1" name="choice[decision]"><br>
-      <input type="text" placeholder="Choice 2" name="choice[decision]"><br><br>
+      <input type="text" placeholder="Choice" name="choice[]"><br>
+      <input type="text" placeholder="Choice" name="choice[]"><br><br>
 
     <input class="small_button" type="submit" value="ADD QUESTION">
     <input class="small_button" type="submit" value="FINISH CREATION">
+  </form>
 </div>

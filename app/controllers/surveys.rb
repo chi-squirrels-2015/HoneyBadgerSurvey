@@ -18,16 +18,18 @@ get '/surveys/new' do
 end
 
 post '/surveys/new' do
-  # @user = User.find_by(id: session[:user_id])
   if request.xhr?
     @survey = Survey.new params[:survey]
     @survey.creator_id = @user.id
     @survey.save
 
+    session[:survey_id] = @survey.id
+
     content_type :json
-    {content: @survey}.to_json
+    {survey: @survey}.to_json
   end
 end
+
 
   # all_questions = params[:questions]
 
@@ -39,17 +41,17 @@ end
   # end
 
 
-get "/surveys/:id/stats" do
+#Trying to render the stats partial on the survey list page
+# get "/surveys/:id/stats" do
 
-  if request.xhr?
-    @survey = Survey.find(params[:id])
-    erb :"surveys/_stats"
-  end
+#   if request.xhr?
+#     @survey = Survey.find(params[:id])
+#     erb :"surveys/_stats"
+#   end
 
-end
+# end
 
 get '/surveys/:id' do
-  # @user = User.find_by(id: session[:user_id])
   @survey = Survey.find(params[:id])
 
   erb :'/surveys/show'
@@ -58,7 +60,6 @@ end
 
 
 post "/surveys/:id" do # Route for Voting -- Working
-  # @user = User.find_by(id: session[:user_id])
   @survey = Survey.find(params[:id])
 
   @survey.questions.each do |q|
