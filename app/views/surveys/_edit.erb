@@ -1,5 +1,9 @@
 <div>
 
+  <form action="/surveys/<%= @survey.id %>" method="POST">
+    <input type="hidden" name="_method" value="delete" />
+    <input type="submit" value="Delete" >
+  </form><br><br>
 
     <form action="/surveys/<%= @survey.id %>" method="POST">
       <input type="hidden" name="_method" value="put" />

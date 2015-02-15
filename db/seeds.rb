@@ -27,6 +27,7 @@ Response.create(choice_id: 6, voter: shiraz)
 
 # ----------------- Survey 2 ------------------------
 
+
 Question.create(ask: "Marvel or DC?", survey: superhero_survey)
 Question.create(ask: "The Flash or AquaMan?", survey: superhero_survey)
 Question.create(ask: "Batman or Green Lantern?", survey: superhero_survey)
