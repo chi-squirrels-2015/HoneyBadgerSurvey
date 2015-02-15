@@ -127,3 +127,7 @@ body {
 #stats {
   display: none;
 }
+
+#add_question_div {
+  display: none;
+}

@@ -1,0 +1,7 @@
+<h3><%= @question.ask %></h3>
+
+<ol>
+  <% @question.choices.each do |choice| %>
+    <li><%= choice.decision %></li>
+  <% end %>
+</ol>
