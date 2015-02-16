@@ -5,25 +5,33 @@
     <input type="submit" value="Delete" >
   </form><br><br>
 
-    <form action="/surveys/<%= @survey.id %>" method="POST">
+  <form action="/surveys/<%= @survey.id %>" method="POST">
+    <input type="hidden" name="_method" value="put" />
+
+    <label>Edit Survey:</label><br>
+    <input type="text" value="<%= @survey.title %>" name="survey[title]"><br>
+    <textarea rows="10" cols="50" name="survey[description]"><%= @survey.description %></textarea><br>
+    <input type="submit" value="Save">
+  </form>
+  <br><br>
+
+  <h2>Caution! Updating a question will delete any preexisting user responses to that question</h2>
+
+  <% @survey.questions.sort.each do |question| %>
+    <label>Edit Question:</label><br>
+    <form action="/questions/<%= question.id %>" method="POST">
       <input type="hidden" name="_method" value="put" />
 
-      <label>Edit Survey:</label><br>
-      <input type="text" value="<%= @survey.title %>" name="survey[title]"><br>
-      <textarea rows="10" cols="50" name="survey[description]"><%= @survey.description %></textarea><br><br>
+      <textarea rows="2" cols="50" name="question[ask]"><%= question.ask %></textarea><br>
 
-      <label>Edit Questions:</label><br>
-      <% @survey.questions.each do |question| %>
-        <textarea rows="2" cols="50" name="question[ask]"><%= question.ask %></textarea><br>
+        <label>Edit Choices:</label><br>
+        <% question.choices.each do |choice| %>
+          <input type="text" value="<%= choice.decision %>" name="choice[]"><br>
+        <% end %>
 
-          <label>Edit Choices:</label><br>
-          <% question.choices.each do |choice| %>
-            <input type="text" value="<%= choice.decision %>" name="choice[decision]"><br>
-          <% end %> <br> <br>
-
-      <% end %>
-      <input type="submit" value="Save">
+      <input type="submit" value="Save"><br> <br>
     </form>
+  <% end %>
 
 
 </div>
