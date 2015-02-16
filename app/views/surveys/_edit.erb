@@ -15,6 +15,8 @@
   </form>
   <br><br>
 
+  <h2>Caution! Updating a question will delete any preexisting user responses to that question</h2>
+
   <% @survey.questions.sort.each do |question| %>
     <label>Edit Question:</label><br>
     <form action="/questions/<%= question.id %>" method="POST">
