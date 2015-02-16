@@ -51,8 +51,8 @@ end
 post "/surveys/:id" do # Route for Voting -- Working
   @survey = Survey.find(params[:id])
 
-  @survey.questions.each do |q|
-    Response.create(choice_id: params[:"#{q.id}"], voter_id: session[:user_id])
+  @survey.questions.each do |question|
+    Response.create(choice_id: params[:"#{question.id}"], voter_id: session[:user_id])
   end
 
   erb :"surveys/_done"
