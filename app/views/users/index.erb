@@ -1,20 +1,6 @@
 <!-- dashboard -->
 <div class="container">
-  <h2><p>Welcome, <%=@user.username.capitalize%></p></h2>
-
-  <div id="dash_buttons">
-
-    <div>
-      <a class="small_button" href = "surveys/new">CREATE SURVEY</a>
-    <div/>
-
-    <div>
-      <form  action="/logout" method="get">
-        <input class="small_button" type="submit" value="LOGOUT">
-      </form>
-    </div>
-
-  </div>
+  <h1>Welcome, <%=@user.username.capitalize%></h1>
 
   <h2>Created Surveys</h2>
     <%@user.created_surveys.each do |survey| %>
