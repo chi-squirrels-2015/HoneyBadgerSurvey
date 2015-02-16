@@ -14,7 +14,7 @@
           <% question.choices.each do |choice| %>
           <% i = question.responses.count %>
           <% perc = (choice.responses.count.to_f/i.to_f)*100 %>
-            <h3><li><%= choice.decision %> <%= perc.floor %>%</li></h3>
+            <h4><li><%= choice.decision %> <%= perc.floor %>%</li></h4>
           <% end %>
         </ol>
       <% end %>

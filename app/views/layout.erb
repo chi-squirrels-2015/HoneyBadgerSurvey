@@ -13,17 +13,25 @@
 </head>
 <body>
 <!--   <header> -->
-<div>
-  <div id="nav_bar">
-    <ul>
-      <li><a class="small_button" href="/dashboard">Home</a></li>
-      <li><a class="small_button" href="/surveys/new">Create</a></li>
-      <li><a class="small_button" href="/surveys">Browse</a></li>
-    </ul>
-  </div>
-</div>
+<header>
+  <ul id="nav_left">
+    <li><a class="header_button" href="/dashboard">Home</a></li>
+    <li><a class="header_button" href="/surveys/new">Create</a></li>
+    <li><a class="header_button" href="/surveys">Browse</a></li>
+  </ul>
+  <ul id="nav_right">
+    <li>
+      <% if current_user %>
+        <a id="logout" class="header_button" href = "/logout">Logout</a>
+      <% else %>
+        <a id="login" class="header_button" href = "/login">Login</a>
+      <% end %>
+    </li>
+  </ul>
+</header>
 <!-- </header> -->
-
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
