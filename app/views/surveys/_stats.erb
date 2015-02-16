@@ -1,5 +1,23 @@
 <div class="container">
 
-  <%= @survey.title %>
+  <ul>
+    <h3><li>Survey Created By: <%= @survey.creator.username %></li></h3>
+    <h3><li>Survey Title: <%= @survey.title %></li></h3>
+    <h3><li>Survey Description: <%= @survey.description %></li></h3>
+    <h3><li>Number of Unique Participants: <%= @survey.voters.count %></li></h3>  <!-- This used to count a user for every question they voted on in the survey so added uniq to model so that this will not display if a user has voted multiple times on the same survey, not sure if this is what we want to do or not... -->
+  </ul>
+  <ol>
+    <br><br>
+    <% @survey.questions.each do |question| %>
+      <h3><li><%= question.ask %></li></h3>
+        <ol>
+          <% question.choices.each do |choice| %>
+          <% i = question.responses.count %>
+          <% perc = (choice.responses.count.to_f/i.to_f)*100 %>
+            <h3><li><%= choice.decision %> <%= perc.floor %>%</li></h3>
+          <% end %>
+        </ol>
+      <% end %>
+  </ol>
 
 </div>
