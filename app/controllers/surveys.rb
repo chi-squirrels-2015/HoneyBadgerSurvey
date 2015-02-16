@@ -30,17 +30,6 @@ post '/surveys/new' do
   end
 end
 
-
-  # all_questions = params[:questions]
-
-  # all_questions.each do |question|
-  #   new_question = Question.new question: question.ask, survey_id: new_survey.id
-  #   question.choices.each do |choice|
-  #     Response.new choice: choice, question_id: new_question.id
-  #   end
-  # end
-
-
 #Trying to render the stats partial on the survey list page
 # get "/surveys/:id/stats" do
 
@@ -53,10 +42,10 @@ end
 
 get '/surveys/:id' do
   @survey = Survey.find(params[:id])
+  session[:survey_id] = @survey.id
 
   erb :'/surveys/show'
 end
-
 
 
 post "/surveys/:id" do # Route for Voting -- Working
@@ -70,18 +59,11 @@ post "/surveys/:id" do # Route for Voting -- Working
 end
 
 
-
-
-put "/surveys/:id" do # Route for edit -- Broken
+put "/surveys/:id" do # Route for Survey -- Working
   @survey = Survey.find(params[:id])
-  @questions = Question.find_by(survey_id: @survey.id)
-  @choices = Choice.find_by(question_id: @questions.id)
-
   @survey.update(params[:survey])
-  @questions.update(params[:question])
-  @choices.update(params[:choice])
 
-  redirect "/dashboard"
+  erb :"surveys/show"
 end
 
 delete "/surveys/:id" do # Route for delete -- Working
@@ -91,7 +73,6 @@ delete "/surveys/:id" do # Route for delete -- Working
   @survey.choices.each {|choice| choice.delete }
   @survey.questions.each {|question| question.delete }
   @survey.delete
-
 
   redirect "/dashboard"
 end

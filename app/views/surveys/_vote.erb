@@ -4,7 +4,7 @@
     <br><br>
       <form action="/surveys/<%= @survey.id %>" method="POST">
 
-        <% @survey.questions.each do |question| %>
+        <% @survey.questions.sort.each do |question| %>
 
           <h3><%= question.ask %></h3>
 
